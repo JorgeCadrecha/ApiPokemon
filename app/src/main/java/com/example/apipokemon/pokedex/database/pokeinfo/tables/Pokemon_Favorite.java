@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 public class Pokemon_Favorite {
     @PrimaryKey
     int id;
-    int favorite = 0; //default false
+    int favorite = 0;
 
     public Pokemon_Favorite(int id, int favorite) {
         this.id = id;

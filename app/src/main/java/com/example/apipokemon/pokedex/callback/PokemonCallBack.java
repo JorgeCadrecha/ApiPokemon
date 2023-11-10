@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class PokemonCallBack {
     private ArrayList<Pokemon> results;
 
-    public ArrayList<Pokemon> getResults() {
+    public ArrayList<Pokemon> getResultados() {
         return results;
     }
 
-    public void setResults(ArrayList<Pokemon> callBackPokemonList) {
+    public void setResultados(ArrayList<Pokemon> callBackPokemonList) {
         this.results = callBackPokemonList;
     }
 }

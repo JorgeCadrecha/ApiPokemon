@@ -49,7 +49,7 @@ public class PokedexRetrofitResponse {
     public static void setOnSuccessResponse(Response<PokemonCallBack> response, ListaPokemonAdapter adapter) {
         responseState = true;
         PokemonCallBack body = response.body();
-        ArrayList<Pokemon> result = body.getResults();
+        ArrayList<Pokemon> result = body.getResultados();
         adapter.agregarLista(result);
         viewModel.agregarTodosLosPokemonsALaBD(result);
     }
@@ -57,7 +57,7 @@ public class PokedexRetrofitResponse {
     public static void setOnSuccessSearchResponse(Response<PokemonCallBack> response, String busca, ListaPokemonAdapter adapter, TextView arrowBack) {
         responseState = true;
         PokemonCallBack body = response.body();
-        ArrayList<Pokemon> result = body.getResults();
+        ArrayList<Pokemon> result = body.getResultados();
         ArrayList<Pokemon> searchResult = new ArrayList<>();
         for (Pokemon p : result) {
             if (p.getName().contains(busca.toLowerCase()))
