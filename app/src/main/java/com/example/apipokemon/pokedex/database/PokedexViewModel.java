@@ -28,68 +28,68 @@ public class PokedexViewModel extends AndroidViewModel {
 
     //Pokemon
     public List<Pokemon> obtenerPokemonsDeLaBadeDeDatos() {
-        return dao.getPokemonsDoDatabase();
+        return dao.obtenerPokemonsDeLaBaseDeDatos();
     }
 
     public void agregarTodosLosPokemonsALaBD(List<Pokemon> pokemons) {
-        dao.addAllPokemons(pokemons);
+        dao.agregarTodosLosPokemons(pokemons);
     }
 
     public List<Pokemon> buscarPokemonsFavoritos(String pokemon) {
-        return dao.searchPokemonsFromDatabase(pokemon);
+        return dao.buscarPokemonsEnLaBaseDeDatos(pokemon);
     }
 
     public LiveData<List<Pokemon>> obtenerPokemonsFavoritos() {
-        return dao.getFavoritePokemonsDoDatabase();
+        return dao.obtenerPokemonsFavoritosDeLaBaseDeDatos();
     }
 
     //PokeInfo
     public void agregarPokemonInfoALaBD(PokeInfo pokeInfo) {
-        dao.addPokeInfo(pokeInfo);
+        dao.agregarPokeInfo(pokeInfo);
     }
 
     public PokeInfo obtenerPokemonInfoDeLaBD(int id) {
-        return dao.getPokeInfoFromDatabase(id);
+        return dao.obtenerPokeInfoDeLaBaseDeDatos(id);
     }
 
     //Type
     public void agregarTipoALaBaseDeDatos(Type tipo) {
-        dao.addType(tipo);
+        dao.agregarTipo(tipo);
     }
 
     public LiveData<List<Type>> obtenerTiposDePokemonDeLaBaseDeDatos(int idPokemon) {
-        return dao.getTypesFromDatabase(idPokemon);
+        return dao.obtenerTiposDeLaBaseDeDatos(idPokemon);
     }
 
     //PokeInfo_Type
     public void agregarRelacionPokeInfoTipo(PokeInfo_Type pokeInfo_type) {
-        dao.addRelationPokeInfoType(pokeInfo_type);
+        dao.agregarRelacionPokeInfoTipo(pokeInfo_type);
     }
 
 
     public void agregarHabilidadALaBD(Ability ability) {
-        dao.addAbility(ability);
+        dao.agregarHabilidad(ability);
     }
 
     public LiveData<List<Ability>> obtenerHabilidadesDePokemonDeLaBaseDeDatos(int idPokemon) {
-        return dao.getAbilitiesFromDatabase(idPokemon);
+        return dao.obtenerHabilidadesDeLaBD(idPokemon);
     }
 
 
     public void agregarRelacionPokeInfoHabilidad(PokeInfo_Ability pokeInfo_ability) {
-        dao.addRelationPokeInfoAbility(pokeInfo_ability);
+        dao.agregarRelacionPokeInfoHabilidad(pokeInfo_ability);
     }
 
 
     public void agregarRelacionPokemonFavorito(Pokemon_Favorite pokemonFavorite) {
-        dao.addRelationPokemonFavorite(pokemonFavorite);
+        dao.agregarRelacionPokemonFavorito(pokemonFavorite);
     }
 
     public int esPokemonFavorito(int id) {
-        return dao.getIsPokemonFavorite(id);
+        return dao.esPokemonFavorito(id);
     }
 
     public LiveData<List<Pokemon>> buscarPokemonsFavoritosEnLaBD(String busca) {
-        return dao.searchFavoritePokemonsDoDatabase(busca);
+        return dao.buscarPokemonsFavoritosEnLaBD(busca);
     }
 }
