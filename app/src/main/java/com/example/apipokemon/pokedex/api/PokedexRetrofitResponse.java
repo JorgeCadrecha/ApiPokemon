@@ -43,7 +43,7 @@ public class PokedexRetrofitResponse {
     public static void setOnErrorResponse(ListaPokemonAdapter adapter, String noConnection) {
         responseState = false;
         Toast.makeText(context, noConnection, Toast.LENGTH_LONG).show();
-        adapter.agregarLista((ArrayList<Pokemon>) viewModel.getPokemonsDoDatabase());
+        adapter.agregarLista((ArrayList<Pokemon>) viewModel.obtenerPokemonsDeLaBadeDeDatos());
     }
 
     public static void setOnSuccessResponse(Response<PokemonCallBack> response, ListaPokemonAdapter adapter) {
@@ -51,7 +51,7 @@ public class PokedexRetrofitResponse {
         PokemonCallBack body = response.body();
         ArrayList<Pokemon> result = body.getResults();
         adapter.agregarLista(result);
-        viewModel.addAllPokemonsToDatabase(result);
+        viewModel.agregarTodosLosPokemonsALaBD(result);
     }
 
     public static void setOnSuccessSearchResponse(Response<PokemonCallBack> response, String busca, ListaPokemonAdapter adapter, TextView arrowBack) {
@@ -66,7 +66,7 @@ public class PokedexRetrofitResponse {
         if (searchResult.size() > 0) {
             adapter.agregarListaDeBusqueda(searchResult);
             arrowBack.setVisibility(View.VISIBLE);
-            viewModel.addAllPokemonsToDatabase(searchResult);
+            viewModel.agregarTodosLosPokemonsALaBD(searchResult);
         } else {
             Toast.makeText(context, ConstantUtil.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
             arrowBack.setVisibility(View.GONE);
@@ -75,16 +75,16 @@ public class PokedexRetrofitResponse {
 
     public static void setInfoResponseSuccess(PokemonInfo body) {
         //salva info no database
-        viewModel.addPokeInfoToDatabase(new PokeInfo(body.getId(), body.getAltura(), body.getWeight(), body.getName()));
+        viewModel.agregarPokemonInfoALaBD(new PokeInfo(body.getId(), body.getAltura(), body.getWeight(), body.getName()));
         //salva tipos e associação info/tipo no database
         for (PokemonInfo.Types type : body.getTypes()) {
-            viewModel.addTypeToDatabase(new Type(type.getType().getNumber(), type.getType().getName()));
-            viewModel.addRelationPokeInfoType(new PokeInfo_Type(body.getId(), type.getType().getNumber()));
+            viewModel.agregarTipoALaBaseDeDatos(new Type(type.getType().getNumber(), type.getType().getName()));
+            viewModel.agregarRelacionPokeInfoTipo(new PokeInfo_Type(body.getId(), type.getType().getNumber()));
         }
         //salva habilidades e  associação info/habilidade no database
         for (PokemonInfo.Ability ability : body.getAbilities()) {
-            viewModel.addAbilityToDatabase(new Ability(ability.getAbilityInfo().getNumber(), ability.getAbilityInfo().getName()));
-            viewModel.addRelationPokeInfoAbility(new PokeInfo_Ability(body.getId(), ability.getAbilityInfo().getNumber()));
+            viewModel.agregarHabilidadALaBD(new Ability(ability.getAbilityInfo().getNumber(), ability.getAbilityInfo().getName()));
+            viewModel.agregarRelacionPokeInfoHabilidad(new PokeInfo_Ability(body.getId(), ability.getAbilityInfo().getNumber()));
         }
     }
 
@@ -101,7 +101,7 @@ public class PokedexRetrofitResponse {
     public static void setOnErrorSearchResponse(String busca, ListaPokemonAdapter adapter, TextView arrowBack) {
         responseState = false;
         Toast.makeText(context, ConstantUtil.Sin_conexion, Toast.LENGTH_SHORT).show();
-        ArrayList<Pokemon> result = (ArrayList<Pokemon>) viewModel.searchPokemonsFromDatabase(busca);
+        ArrayList<Pokemon> result = (ArrayList<Pokemon>) viewModel.buscarPokemonsFavoritos(busca);
         verificaBuscaRetornadaDoBancoDeDados(result, adapter, arrowBack);
     }
 

@@ -19,12 +19,11 @@ import com.example.apipokemon.pokedex.entities.Pokemon;
         exportSchema = false, version = 8)
 public abstract class PokedexDatabase extends RoomDatabase {
 
-    public abstract PokedexDao getPokedexDao();
+    public abstract PokedexDao obtenerPokedexDao();
 
     public static PokedexDatabase getInstance(Context contexto) {
         return Room.databaseBuilder(contexto, PokedexDatabase.class, "pokedex.db")
                 .allowMainThreadQueries()
-//                .fallbackToDestructiveMigration()
                 .build();
     }
 }

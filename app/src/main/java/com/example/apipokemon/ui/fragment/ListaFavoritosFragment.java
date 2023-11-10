@@ -83,7 +83,7 @@ public class ListaFavoritosFragment extends Fragment {
     private void buscarListaFavoritos() {
         buscandoPokemons = false;
         adapter.limpiarLista();
-        viewModel.getFavoritePokemons().observe(getActivity(), lista -> {
+        viewModel.obtenerPokemonsFavoritos().observe(getActivity(), lista -> {
             adapter.agregarLista((ArrayList<Pokemon>) lista);
         });
     }
@@ -98,7 +98,7 @@ public class ListaFavoritosFragment extends Fragment {
 
     public void buscaLosFavoritos(String busca) {
         ultimaBusca = busca;
-        viewModel.searchFavoritePokemons(busca).observe(getActivity(), lista -> {
+        viewModel.buscarPokemonsFavoritosEnLaBD(busca).observe(getActivity(), lista -> {
             adapter.limpiarLista();
             buscandoPokemons = true;
             if (lista.size() > 0) {

@@ -119,10 +119,10 @@ public class InfoPokemonActivity extends AppCompatActivity {
 
     private void estadoFavorito() {
         try {
-            if (viewModel.getIsPokemonFavorite(pokemonId) == 1)
+            if (viewModel.esPokemonFavorito(pokemonId) == 1)
                 iconoFavorito.setChecked(true);
         } catch (IndexOutOfBoundsException ie) {
-            viewModel.addRelationPokemonFavorite(new Pokemon_Favorite(pokemonId, 0));
+            viewModel.agregarRelacionPokemonFavorito(new Pokemon_Favorite(pokemonId, 0));
             iconoFavorito.setChecked(false);
         }
     }
@@ -197,7 +197,7 @@ public class InfoPokemonActivity extends AppCompatActivity {
     private PokeInfo getPokeInfo() {
         Toast.makeText(InfoPokemonActivity.this, ConstantUtil.Sin_conexion, Toast.LENGTH_SHORT).show();
         noConnection.setVisibility(View.VISIBLE);
-        return viewModel.getPokeInfoFromDatabase(pokemonId);
+        return viewModel.obtenerPokemonInfoDeLaBD(pokemonId);
     }
 
     @NonNull
@@ -217,12 +217,12 @@ public class InfoPokemonActivity extends AppCompatActivity {
                     + " - Altura: " + FormatUtil.formatoInfo(info.getHeight(), "m");
             pesoAlturaPokemon.setText(pesoAltura);
 
-            viewModel.getPokemonTypesFromDatabase(info.getId()).observe(this, lista -> {
+            viewModel.obtenerTiposDePokemonDeLaBaseDeDatos(info.getId()).observe(this, lista -> {
                 adaptadorTipo.agregarListaDeBaseDeDatos((ArrayList<Type>) lista);
                 establecerFondo(lista.get(0).getIdTipo());
             });
 
-            viewModel.getPokemonAbilitiesFromDatabase(info.getId()).observe(this, lista -> {
+            viewModel.obtenerHabilidadesDePokemonDeLaBaseDeDatos(info.getId()).observe(this, lista -> {
                 adaptadorHabilidad.agregarListaDeBaseDeDatos((ArrayList<Ability>) lista);
             });
         } catch (NullPointerException nu) {
@@ -234,9 +234,9 @@ public class InfoPokemonActivity extends AppCompatActivity {
     public void toggleFavoriteIcon() {
         iconoFavorito.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                viewModel.addRelationPokemonFavorite(new Pokemon_Favorite(pokemonId, 1));
+                viewModel.agregarRelacionPokemonFavorito(new Pokemon_Favorite(pokemonId, 1));
             } else {
-                viewModel.addRelationPokemonFavorite(new Pokemon_Favorite(pokemonId, 0));
+                viewModel.agregarRelacionPokemonFavorito(new Pokemon_Favorite(pokemonId, 0));
             }
         });
     }
