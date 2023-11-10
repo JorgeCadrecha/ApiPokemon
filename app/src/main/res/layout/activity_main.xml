@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/square"
-        android:backgroundTint="@color/red_pokemon"
+        android:backgroundTint="@color/purple_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <EditText
-        android:id="@+id/editTextPesquisaNomePokemon"
+        android:id="@+id/editTextNombrePokemon"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -44,15 +44,15 @@
         android:background="@drawable/round_square"
         android:backgroundTint="@color/yellow_pokemon"
         android:drawableLeft="@drawable/ic_search"
-        android:drawableTint="@color/red_pokemon"
+        android:drawableTint="@color/black"
         android:onClick="buscaPokemon"
         android:padding="8dp"
         android:text="BUSCAR"
-        android:textColor="@color/red_pokemon"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageview_mask"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPesquisaNomePokemon"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNombrePokemon"
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -64,11 +64,11 @@
         android:clickable="true"
         android:elevation="50dp"
         android:onClick="scrollUp"
-        android:tooltipText="Retornar ao início da lista"
+        android:tooltipText="Regresar al principio de la lista"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPesquisaNomePokemon"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombrePokemon"
         app:srcCompat="@drawable/ic_arrow_up" />
 
     <com.google.android.material.tabs.TabLayout
@@ -111,11 +111,11 @@
         android:layout_height="wrap_content"
         android:background="@color/yellow_pokemon"
         android:drawableLeft="@drawable/ic_arrow_back"
-        android:drawableTint="@color/red_pokemon"
+        android:drawableTint="@color/black"
         android:onClick="retornaAListaPrincipal"
         android:padding="8dp"
-        android:text="  LIMPAR PESQUISA"
-        android:textColor="@color/red_pokemon"
+        android:text="BORRAR BÚSQUEDA"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="gone"

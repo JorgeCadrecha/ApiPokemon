@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 
 import com.example.apipokemon.R;
 
-public class LoadingAnimation { //LoadingAnimation da lista de pokémons
+public class Animacion {
     private static ProgressBar spinner;
 
     public static void createAnimation(View vi) {

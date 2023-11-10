@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/red_pokemon"
+    android:background="@color/white"
     tools:context=".ui.activity.InfoPokemonActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -138,7 +138,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/ic_arrow_back"
-            android:backgroundTint="@color/red_pokemon"
+            android:backgroundTint="@color/black"
             android:onClick="finishBtn"
             android:text="X"
             app:layout_constraintEnd_toStartOf="@+id/info_imagem_pokemon"
@@ -150,10 +150,12 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="20dp"
+            android:layout_marginTop="248dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/toggle_favorite_button"
+            android:backgroundTint="@color/black"
             android:textOff=""
             android:textOn=""
-            android:background="@drawable/toggle_favorite_button"
-            android:backgroundTint="@color/red_pokemon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"></ToggleButton>
 
@@ -176,7 +178,7 @@
             android:visibility="gone"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/red_pokemon"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/loading_info"
             app:layout_constraintStart_toStartOf="@+id/loading_info"

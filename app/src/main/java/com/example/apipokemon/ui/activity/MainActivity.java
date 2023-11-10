@@ -16,7 +16,7 @@ import com.example.apipokemon.R;
 import com.example.apipokemon.recyclerview.adapter.viewPager.ViewPagerAdapter;
 import com.example.apipokemon.ui.fragment.ListaFavoritosFragment;
 import com.example.apipokemon.ui.fragment.ListaPokemonFragment;
-import com.example.apipokemon.util.ConstantUtil;
+import com.example.apipokemon.util.Constantes;
 
 public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void buscaPokemon(View view) {
-        pesquisa = findViewById(R.id.editTextPesquisaNomePokemon);
+        pesquisa = findViewById(R.id.editTextNombrePokemon);
         String busca = pesquisa.getText().toString();
         if (!busca.isEmpty()) {
             buscaPokemonporFragmentos(busca);
             return;
         }
-        Toast.makeText(this, ConstantUtil.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Constantes.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
     }
 
     private void buscaPokemonporFragmentos(String busca) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 listaFavoritosFragment.buscaLosFavoritos(busca);
                 break;
             default:
-                Toast.makeText(this, ConstantUtil.Pokemon_no_encontrado, Toast.LENGTH_SHORT);
+                Toast.makeText(this, Constantes.Pokemon_no_encontrado, Toast.LENGTH_SHORT);
                 arrowBack.setVisibility(View.GONE);
         }
     }
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 listaFavoritosFragment.scrollUp();
                 break;
             default:
-                Toast.makeText(this, ConstantUtil.Error_De_Carga, Toast.LENGTH_SHORT);
+                Toast.makeText(this, Constantes.Error_De_Carga, Toast.LENGTH_SHORT);
         }
     }
 
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         arrowBack.setVisibility(View.GONE);
         pesquisa.setText("");
         retornaListaPrincipalFragment();
-        Toast.makeText(this, ConstantUtil.Volver, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Constantes.Volver, Toast.LENGTH_SHORT).show();
     }
 
     private void retornaListaPrincipalFragment() {

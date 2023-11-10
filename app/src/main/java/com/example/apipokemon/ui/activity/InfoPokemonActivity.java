@@ -37,9 +37,9 @@ import com.example.apipokemon.pokedex.entities.Pokemon;
 import com.example.apipokemon.pokedex.entities.PokemonInfo;
 import com.example.apipokemon.recyclerview.adapter.PokemonAbilityAdapter;
 import com.example.apipokemon.recyclerview.adapter.PokemonTypeAdapter;
-import com.example.apipokemon.util.ColorUtil;
-import com.example.apipokemon.util.ConstantUtil;
-import com.example.apipokemon.util.FormatUtil;
+import com.example.apipokemon.util.Colores;
+import com.example.apipokemon.util.Constantes;
+import com.example.apipokemon.util.Formato;
 
 
 import java.util.ArrayList;
@@ -109,11 +109,11 @@ public class InfoPokemonActivity extends AppCompatActivity {
             getInfoApi();
             toggleFavoriteIcon();
         } else
-            Toast.makeText(this, ConstantUtil.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Constantes.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
     }
 
     private void establecerFondo(int numero) {
-        int backgroundColor = ColorUtil.getBackgroundColor(numero);
+        int backgroundColor = Colores.getBackgroundColor(numero);
         backgroundTheme.getBackground().setColorFilter(backgroundColor, PorterDuff.Mode.DARKEN);
     }
 
@@ -129,7 +129,7 @@ public class InfoPokemonActivity extends AppCompatActivity {
 
     private void setFotoPokemon() {
         Glide.with(this)
-                .load(ConstantUtil.IMAGE_BASE_URL + pokemonId + ".png")
+                .load(Constantes.IMAGE_BASE_URL + pokemonId + ".png")
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imagemPokemon);
@@ -195,7 +195,7 @@ public class InfoPokemonActivity extends AppCompatActivity {
     }
 
     private PokeInfo getPokeInfo() {
-        Toast.makeText(InfoPokemonActivity.this, ConstantUtil.Sin_conexion, Toast.LENGTH_SHORT).show();
+        Toast.makeText(InfoPokemonActivity.this, Constantes.Sin_conexion, Toast.LENGTH_SHORT).show();
         noConnection.setVisibility(View.VISIBLE);
         return viewModel.obtenerPokemonInfoDeLaBD(pokemonId);
     }
@@ -203,8 +203,8 @@ public class InfoPokemonActivity extends AppCompatActivity {
     @NonNull
     private PokemonInfo setPokemonInfo(Response<PokemonInfo> response) {
         PokemonInfo body = response.body();
-        String pesoAltura = "Peso: " + FormatUtil.formatoInfo(body.getWeight(), "kg")
-                + " - Altura: " + FormatUtil.formatoInfo(body.getAltura(), "m");
+        String pesoAltura = "Peso: " + Formato.formatoInfo(body.getWeight(), "kg")
+                + " - Altura: " + Formato.formatoInfo(body.getAltura(), "m");
         adaptadorHabilidad.agregarListaHabilidades((ArrayList<PokemonInfo.Ability>) body.getAbilities());
         adaptadorTipo.agregarLista((ArrayList<PokemonInfo.Types>) body.getTypes());
         pesoAlturaPokemon.setText(pesoAltura);
@@ -213,8 +213,8 @@ public class InfoPokemonActivity extends AppCompatActivity {
 
     private void setInfoFromDatabase(PokeInfo info) {
         try {
-            String pesoAltura = "Peso: " + FormatUtil.formatoInfo(info.getWeight(), "kg")
-                    + " - Altura: " + FormatUtil.formatoInfo(info.getHeight(), "m");
+            String pesoAltura = "Peso: " + Formato.formatoInfo(info.getWeight(), "kg")
+                    + " - Altura: " + Formato.formatoInfo(info.getHeight(), "m");
             pesoAlturaPokemon.setText(pesoAltura);
 
             viewModel.obtenerTiposDePokemonDeLaBaseDeDatos(info.getId()).observe(this, lista -> {
@@ -227,7 +227,7 @@ public class InfoPokemonActivity extends AppCompatActivity {
             });
         } catch (NullPointerException nu) {
             Log.i("Pokedex Null", "setInfoPesoAltura: no exite el pokemon en la base de datos" + nombrePokemon.getText());
-            Toast.makeText(this, ConstantUtil.Error_De_Carga, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Constantes.Error_De_Carga, Toast.LENGTH_SHORT).show();
         }
     }
 

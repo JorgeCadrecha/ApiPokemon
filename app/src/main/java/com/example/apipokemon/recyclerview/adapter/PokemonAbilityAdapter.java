@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apipokemon.R;
 import com.example.apipokemon.pokedex.database.pokeinfo.tables.Ability;
 import com.example.apipokemon.pokedex.entities.PokemonInfo;
-import com.example.apipokemon.util.ConstantUtil;
+import com.example.apipokemon.util.Constantes;
 
 import java.util.ArrayList;
 
@@ -59,7 +59,7 @@ public class PokemonAbilityAdapter extends RecyclerView.Adapter<PokemonAbilityAd
             this.listaDeHabilidades.addAll(lista);
             notifyDataSetChanged();
         } else {
-            Log.i(ConstantUtil.Error_pokedex, lista.toString());
+            Log.i(Constantes.Error_pokedex, lista.toString());
         }
     }
 
@@ -68,7 +68,7 @@ public class PokemonAbilityAdapter extends RecyclerView.Adapter<PokemonAbilityAd
             this.listaDeHabilidadesBD.addAll(lista);
             notifyDataSetChanged();
         } else {
-            Log.i(ConstantUtil.Error_pokedex, lista.toString());
+            Log.i(Constantes.Error_pokedex, lista.toString());
         }
     }
 

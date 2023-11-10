@@ -21,8 +21,8 @@ import com.example.apipokemon.R;
 import com.example.apipokemon.pokedex.database.PokedexViewModel;
 import com.example.apipokemon.pokedex.entities.Pokemon;
 import com.example.apipokemon.recyclerview.adapter.ListaPokemonAdapter;
-import com.example.apipokemon.util.ConstantUtil;
-import com.example.apipokemon.util.animation.LoadingAnimation;
+import com.example.apipokemon.util.Constantes;
+import com.example.apipokemon.util.animation.Animacion;
 
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class ListaFavoritosFragment extends Fragment {
     }
 
     private void crearAnimacionCargando() {
-        LoadingAnimation.createAnimation(vista);
+        Animacion.createAnimation(vista);
     }
 
     private void buscarListaFavoritos() {
@@ -105,7 +105,7 @@ public class ListaFavoritosFragment extends Fragment {
                 adapter.agregarListaDeBusqueda((ArrayList<Pokemon>) lista);
                 flechaAtras.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(getActivity(), ConstantUtil.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), Constantes.Pokemon_no_encontrado, Toast.LENGTH_SHORT).show();
                 flechaAtras.setVisibility(View.GONE);
             }
         });
@@ -115,7 +115,7 @@ public class ListaFavoritosFragment extends Fragment {
         adapter.limpiarLista();
         buscarListaFavoritos();
         ultimaBusca = "";
-        Toast.makeText(getContext(), ConstantUtil.Volver, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), Constantes.Volver, Toast.LENGTH_SHORT).show();
     }
 
     public void scrollUp() {

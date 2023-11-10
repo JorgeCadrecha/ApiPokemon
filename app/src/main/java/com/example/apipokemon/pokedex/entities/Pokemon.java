@@ -3,7 +3,7 @@ package com.example.apipokemon.pokedex.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.apipokemon.util.FormatUtil;
+import com.example.apipokemon.util.Formato;
 
 import java.io.Serializable;
 
@@ -32,7 +32,7 @@ public class Pokemon implements Serializable {
     }
 
     public int getNumber() {
-        this.number = FormatUtil.getUrlAcortada(url);
+        this.number = Formato.getUrlAcortada(url);
         return number;
     }
 

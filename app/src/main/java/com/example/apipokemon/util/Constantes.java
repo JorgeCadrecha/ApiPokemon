@@ -1,6 +1,6 @@
 package com.example.apipokemon.util;
 
-public class ConstantUtil {
+public class Constantes {
     public final static String BASE_URL = "https://pokeapi.co/api/v2/";
     public static final String IMAGE_BASE_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 
@@ -21,7 +21,7 @@ public class ConstantUtil {
     public static final String Bicho = "#87B37A";
     public static final String Fantasma = "#17183B";
     public static final String Acero = "#B3C5D7";
-    public static final String Fuego = "#E55934";
+    public static final String Fuego = "#E3471E";
     public static final String Agua = "#4381C1";
     public static final String GRASS = "#82D173";
     public static final String Electrico = "#FDE74C";

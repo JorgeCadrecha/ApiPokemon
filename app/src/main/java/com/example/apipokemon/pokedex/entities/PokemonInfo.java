@@ -1,6 +1,6 @@
 package com.example.apipokemon.pokedex.entities;
 
-import com.example.apipokemon.util.FormatUtil;
+import com.example.apipokemon.util.Formato;
 
 import java.util.List;
 
@@ -77,7 +77,7 @@ public class PokemonInfo {
             }
 
             public int getNumber() {
-                return FormatUtil.getUrlAcortada(url);
+                return Formato.getUrlAcortada(url);
             }
         }
     }
@@ -112,7 +112,7 @@ public class PokemonInfo {
             }
 
             public int getNumber() {
-                return FormatUtil.getUrlAcortada(url);
+                return Formato.getUrlAcortada(url);
             }
         }
     }

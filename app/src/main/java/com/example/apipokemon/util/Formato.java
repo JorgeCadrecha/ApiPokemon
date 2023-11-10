@@ -2,7 +2,7 @@ package com.example.apipokemon.util;
 
 import com.example.apipokemon.pokedex.entities.Pokemon;
 
-public class FormatUtil {
+public class Formato {
 
     public static String formatoInfo(int atributo, String info) {
         String format = "" + atributo;

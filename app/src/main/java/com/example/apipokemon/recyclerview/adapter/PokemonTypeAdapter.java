@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.apipokemon.R;
 import com.example.apipokemon.pokedex.database.pokeinfo.tables.Type;
 import com.example.apipokemon.pokedex.entities.PokemonInfo;
-import com.example.apipokemon.util.ColorUtil;
-import com.example.apipokemon.util.ConstantUtil;
+import com.example.apipokemon.util.Colores;
+import com.example.apipokemon.util.Constantes;
 
 import java.util.ArrayList;
 
@@ -65,9 +65,9 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<com.example.apipoke
     private void setColorTipo(ViewHolder holder, int tipo) {
         Drawable fondo = holder.typeContainerImageView.getBackground();
         Drawable pokeball = holder.logoImageView.getBackground();
-        int viewColor = ColorUtil.getForegroundViewColor(tipo);
+        int viewColor = Colores.getForegroundViewColor(tipo);
 
-        fondo.setColorFilter(ColorUtil.getForegroundViewColor(tipo), PorterDuff.Mode.MULTIPLY);
+        fondo.setColorFilter(Colores.getForegroundViewColor(tipo), PorterDuff.Mode.MULTIPLY);
         holder.typeTextView.setTextColor(viewColor);
         pokeball.setColorFilter(viewColor, PorterDuff.Mode.SRC_IN);
     }
@@ -77,7 +77,7 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<com.example.apipoke
             this.listaTipo.addAll(lista);
             notifyDataSetChanged();
         } else {
-            Log.i(ConstantUtil.Error_pokedex, lista.toString());
+            Log.i(Constantes.Error_pokedex, lista.toString());
         }
     }
 
@@ -86,7 +86,7 @@ public class PokemonTypeAdapter extends RecyclerView.Adapter<com.example.apipoke
             this.listaTipoBD.addAll(lista);
             notifyDataSetChanged();
         } else {
-            Log.i(ConstantUtil.Error_pokedex, lista.toString());
+            Log.i(Constantes.Error_pokedex, lista.toString());
         }
     }
 

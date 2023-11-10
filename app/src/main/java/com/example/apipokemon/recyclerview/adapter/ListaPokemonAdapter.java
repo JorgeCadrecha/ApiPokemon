@@ -19,8 +19,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.apipokemon.R;
 import com.example.apipokemon.pokedex.entities.Pokemon;
 import com.example.apipokemon.ui.activity.InfoPokemonActivity;
-import com.example.apipokemon.util.ConstantUtil;
-import com.example.apipokemon.util.FormatUtil;
+import com.example.apipokemon.util.Constantes;
+import com.example.apipokemon.util.Formato;
 
 
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Pokemon pokemon = listaDePokemons.get(position);
-        holder.nomeView.setText(FormatUtil.getNombrePokemonFormato(pokemon));
+        holder.nomeView.setText(Formato.getNombrePokemonFormato(pokemon));
         obtenerImagenDesdeApi(holder, pokemon);
         holder.container.setOnClickListener(view -> {
             iniciarActividadInfoPokemon(pokemon);
@@ -57,13 +57,13 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
 
     private void iniciarActividadInfoPokemon(Pokemon pokemon) {
         Intent intent = new Intent(activity, InfoPokemonActivity.class);
-        intent.putExtra(ConstantUtil.Pokemon_extras, pokemon);
+        intent.putExtra(Constantes.Pokemon_extras, pokemon);
         activity.startActivity(intent);
     }
 
     private void obtenerImagenDesdeApi(@NonNull ViewHolder holder, Pokemon pokemon) {
         Glide.with(context)
-                .load(ConstantUtil.IMAGE_BASE_URL + pokemon.getNumber() + ".png")
+                .load(Constantes.IMAGE_BASE_URL + pokemon.getNumber() + ".png")
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imagemView);
@@ -79,7 +79,7 @@ public class ListaPokemonAdapter extends RecyclerView.Adapter<ListaPokemonAdapte
             this.listaDePokemons.addAll(lista);
             notifyDataSetChanged();
         } else {
-            Log.i(ConstantUtil.Error_pokedex, lista.toString());
+            Log.i(Constantes.Error_pokedex, lista.toString());
         }
     }
 

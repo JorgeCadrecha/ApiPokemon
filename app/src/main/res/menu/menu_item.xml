@@ -5,7 +5,7 @@
     android:id="@+id/menu_item_arrow_back"
     app:showAsAction="always"
     android:icon="@drawable/ic_arrow_back"
-    android:title="Voltar à lista principal"
-    android:iconTint="@color/yellow_pokemon"
+    android:title="Volver a la lista principal"
+    android:iconTint="@color/black"
     ></item>
 </menu>

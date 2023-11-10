@@ -21,8 +21,8 @@ import com.example.apipokemon.pokedex.api.PokedexRetrofitResponse;
 import com.example.apipokemon.pokedex.api.PokemonRetrofit;
 import com.example.apipokemon.pokedex.database.PokedexViewModel;
 import com.example.apipokemon.recyclerview.adapter.ListaPokemonAdapter;
-import com.example.apipokemon.util.ConstantUtil;
-import com.example.apipokemon.util.animation.LoadingAnimation;
+import com.example.apipokemon.util.Constantes;
+import com.example.apipokemon.util.animation.Animacion;
 
 
 public class ListaPokemonFragment extends Fragment {
@@ -55,7 +55,7 @@ public class ListaPokemonFragment extends Fragment {
     }
 
     private void crearAnimacionCargando() {
-        LoadingAnimation.createAnimation(vista);
+        Animacion.createAnimation(vista);
     }
 
     private void crearRefreshLayout() {
@@ -133,7 +133,7 @@ public class ListaPokemonFragment extends Fragment {
         offset = 0;
         obtenerInformacion(offset);
         ultimaBusca = "";
-        Toast.makeText(getContext(), ConstantUtil.Volver, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), Constantes.Volver, Toast.LENGTH_SHORT).show();
     }
 
     public void scrollUp() {

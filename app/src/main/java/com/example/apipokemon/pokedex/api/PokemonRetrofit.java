@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.example.apipokemon.pokedex.callback.PokemonCallBack;
 
 import com.example.apipokemon.recyclerview.adapter.ListaPokemonAdapter;
-import com.example.apipokemon.util.ConstantUtil;
+import com.example.apipokemon.util.Constantes;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,7 +20,7 @@ public class PokemonRetrofit {
 
     public void createRetrofit() {
         retrofit = new Retrofit.Builder()
-                .baseUrl(ConstantUtil.BASE_URL)
+                .baseUrl(Constantes.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -32,16 +32,16 @@ public class PokemonRetrofit {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(Call<PokemonCallBack> call, Response<PokemonCallBack> response) {
-                if (response.isSuccessful()) //busca lista da API e insere no adapter
+                if (response.isSuccessful())
                     PokedexRetrofitResponse.setOnSuccessResponse(response, adapter);
-                else  //busca lista do banco de dados e insere no adapter
-                    PokedexRetrofitResponse.setOnErrorResponse(adapter, ConstantUtil.Error_De_Carga);
+                else
+                    PokedexRetrofitResponse.setOnErrorResponse(adapter, Constantes.Error_De_Carga);
             }
 
             @SuppressLint("LongLogTag")
             @Override
-            public void onFailure(Call<PokemonCallBack> call, Throwable t) { //busca lista do banco de dados e insere no adapter
-                PokedexRetrofitResponse.setOnErrorResponse(adapter, ConstantUtil.Sin_conexion);
+            public void onFailure(Call<PokemonCallBack> call, Throwable t) {
+                PokedexRetrofitResponse.setOnErrorResponse(adapter, Constantes.Sin_conexion);
             }
         });
     }
